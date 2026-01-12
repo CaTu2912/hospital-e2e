@@ -1,5 +1,9 @@
 import { test } from '@playwright/test';
 
+// Debug Script: Inspect Login Page
+// Chức năng: In ra các placeholder và button text trên trang Login
+// Liên kết: https://hospital.element-trac-group.id.vn/auth/login
+// Mục đích: Kiểm tra nhanh các element trên trang đăng nhập
 test('inspect login page', async ({ page }) => {
     await page.goto('https://hospital.element-trac-group.id.vn/auth/login');
     await page.waitForLoadState('networkidle');

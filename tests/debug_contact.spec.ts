@@ -4,6 +4,10 @@ import path from 'path';
 
 const CONTACT_URL = 'https://hospital.element-trac-group.id.vn/contact?active=lienhe';
 
+// Debug Script: Inspect Contact Page
+// Chức năng: Crawl cấu trúc DOM của trang liên hệ và xuất ra file JSON
+// Liên kết: https://hospital.element-trac-group.id.vn/contact?active=lienhe
+// Mục đích: Phân tích cấu trúc form để tìm selector chính xác
 test('inspect contact page', async ({ page }) => {
     await page.goto(CONTACT_URL, { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(5000);

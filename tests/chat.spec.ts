@@ -7,13 +7,19 @@ const VALID_USER = {
     password: 'thanhthanh'
 };
 
+// UC_013: Sử dụng HealthBot (Chat)
+// Chức năng: Kiểm thử các hoạt động liên quan đến Chatbot hỗ trợ sức khỏe
+// Liên kết: https://hospital.element-trac-group.id.vn/patient/chat
 test.describe('UC_013 - Sử dụng HealthBot (Chat)', () => {
 
     // Hook: Login trước mỗi test case
+    // Mục đích: Đảm bảo người dùng đã đăng nhập để truy cập trang Chat (yêu cầu quyền Patient)
+    // Liên kết: POST /auth/login -> Redirects to /patient/chat
     test.beforeEach(async ({ page }) => {
         await page.goto(LOGIN_URL, { waitUntil: 'domcontentloaded' });
 
-        // Login flow
+        // Login flow: Nhập username, password và click Đăng nhập
+        // Dữ liệu: username='nguoidung1', password='thanhthanh'
         await page.locator('input[type="text"], input[name="username"]').first().fill(VALID_USER.username);
         await page.locator('input[type="password"]').fill(VALID_USER.password);
         await page.locator('button[type="submit"], button:has-text("Đăng nhập")').first().click();
@@ -23,6 +29,9 @@ test.describe('UC_013 - Sử dụng HealthBot (Chat)', () => {
     });
 
     // ====== UC013_TC01 ======
+    // Chức năng: Truy cập trang HealthBot từ menu hoặc URL trực tiếp
+    // Liên kết: /patient/chat
+    // Mục đích: Kiểm tra xem trang Chat có truy cập được không
     test('UC013_TC01 - Truy cập HealthBot từ menu trái', async ({ page }) => {
         // Navigate directly to ensure we are on the page
         await page.goto(CHAT_URL, { waitUntil: 'domcontentloaded' });
@@ -32,6 +41,9 @@ test.describe('UC_013 - Sử dụng HealthBot (Chat)', () => {
     });
 
     // ====== UC013_TC03 ======
+    // Chức năng: Tạo đoạn chat mới
+    // Liên kết: Button "Tạo" hoặc Icon "+" trên giao diện Chat
+    // Mục đích: Kiểm tra nút tạo chat có hoạt động không
     test('UC013_TC03 - Tạo đoạn chat mới', async ({ page }) => {
         await page.goto(CHAT_URL);
 
@@ -53,6 +65,9 @@ test.describe('UC_013 - Sử dụng HealthBot (Chat)', () => {
     });
 
     // ====== UC013_TC06 ======
+    // Chức năng: Gửi tin nhắn văn bản
+    // Liên kết: Input chat -> Button "Gửi"
+    // Mục đích: Kiểm tra khả năng gửi tin nhắn text bình thường
     test('UC013_TC06 - Gửi tin nhắn text bình thường', async ({ page }) => {
         await page.goto(CHAT_URL);
         await page.waitForLoadState('networkidle');
@@ -82,6 +97,9 @@ test.describe('UC_013 - Sử dụng HealthBot (Chat)', () => {
     });
 
     // ====== UC013_TC08 ======
+    // Chức năng: Validate gửi tin nhắn rỗng
+    // Liên kết: Input chat (empty) -> Enter/Send
+    // Mục đích: Đảm bảo hệ thống không crash hoặc gửi tin nhắn rỗng vô nghĩa
     test('UC013_TC08 - Không cho gửi tin nhắn rỗng', async ({ page }) => {
         await page.goto(CHAT_URL);
         await page.waitForLoadState('networkidle');

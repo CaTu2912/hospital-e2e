@@ -60,12 +60,20 @@ async function selectFutureDate(page: Page) {
   console.log('Date selected.');
 }
 
+// UC005: Booking Validation Debug
+// Chức năng: Debug lỗi validation khi đặt lịch khám
+// Liên kết: https://hospital.element-trac-group.id.vn/
+// Mục đích: Script này dùng để chạy riêng biệt, kiểm tra kỹ phần validation error
 test.describe('UC005 - Booking Validation Debug', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
     await expect(page.locator('button', { hasText: /đặt lịch khám/i })).toBeVisible();
   });
 
+  // ====== UC005_TC03 (Debug) ======
+  // Chức năng: Debug case không chọn chuyên khoa
+  // Liên kết: Bỏ qua chọn Chuyên khoa -> Submit
+  // Mục đích: Xác minh xem lỗi validation có hiển thị đúng class .ant-form-item-explain-error không
   test.only('UC005_TC03 - Không chọn chuyên khoa (Debug)', async ({ page }) => {
     await test.step('1) Chọn ngày hợp lệ', async () => {
       await selectFutureDate(page);

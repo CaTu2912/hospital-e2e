@@ -7,6 +7,10 @@ const VALID_USER = {
     password: 'thanhthanh'
 };
 
+// Debug Script: Inspect Chat Page
+// Chức năng: Crawl và in ra danh sách các element (button, input, link) trên trang Chat
+// Liên kết: https://hospital.element-trac-group.id.vn/patient/chat
+// Mục đích: Hỗ trợ tìm selector khi viết test case chính thức
 test('inspect chat page', async ({ page }) => {
     // Login first
     await page.goto(LOGIN_URL, { waitUntil: 'domcontentloaded' });

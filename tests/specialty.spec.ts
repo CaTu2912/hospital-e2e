@@ -84,7 +84,7 @@ test.describe('UC004 - Thông tin khoa khám', () => {
         if (await doctorLink.isVisible()) {
             await doctorLink.click();
             // Verify URL
-            await expect(page).toHaveURL(/\/doctor\/|\/chi-tiet-bac-si\//);
+            await expect(page).toHaveURL(/\/doctors\/|\/chi-tiet-bac-si\//);
         } else {
             // Fallback: Check if there are any buttons at all in doctor section
             console.log('Không tìm thấy nút "Tìm hiểu thêm" rõ ràng.');

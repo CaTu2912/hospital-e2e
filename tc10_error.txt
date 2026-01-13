@@ -1,0 +1,35 @@
+
+Running 1 test using 1 worker
+
+[1A[2K[1/1] [chromium] › tests\news.spec.ts:173:9 › UC006 - Tin tức y tế › UC006_TC10 - Ảnh bài viết load thành công
+[1A[2K[chromium] › tests\news.spec.ts:173:9 › UC006 - Tin tức y tế › UC006_TC10 - Ảnh bài viết load thành công
+Checking 5 images...
+
+[1A[2KImage 0 broken. Src: https://res.cloudinary.com/dto5it4mq/image/upload/v1750515765/news/yjnzm4l4xocsivr7wlbg.jpg
+
+[1A[2K  1) [chromium] › tests\news.spec.ts:173:9 › UC006 - Tin tức y tế › UC006_TC10 - Ảnh bài viết load thành công 
+
+    Error: Image at index 0 failed to load
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32mtrue[39m
+    Received: [31mfalse[39m
+
+      202 |                 const src = await img.getAttribute('src');
+      203 |                 console.log(`Image ${i} broken. Src: ${src}`);
+    > 204 |                 expect(isLoaded, `Image at index ${i} failed to load`).toBe(true);
+          |                                                                        ^
+      205 |             }
+      206 |         }
+      207 |     });
+        at D:\Testhospital\hospital-e2e\tests\news.spec.ts:204:72
+
+    Error Context: test-results\news-UC006---Tin-tức-y-tế--1f61d-nh-bài-viết-load-thành-công-chromium\error-context.md
+
+
+[1A[2K  1 failed
+    [chromium] › tests\news.spec.ts:173:9 › UC006 - Tin tức y tế › UC006_TC10 - Ảnh bài viết load thành công 
+
+[36m  Serving HTML report at http://localhost:64232. Press Ctrl+C to quit.[39m
+^C

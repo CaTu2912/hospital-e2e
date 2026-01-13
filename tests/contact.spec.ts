@@ -93,7 +93,6 @@ test.describe('UC_007 - Gửi liên hệ', () => {
         await expect(page.locator('text=/độ dài|không hợp lệ|invalid/i')).toBeVisible();
     });
 
-    // ====== TC10 -> TC13: Content & Special Chars (Manual -> Auto) ======
     // Chức năng: Kiểm tra giới hạn và định dạng nội dung tin nhắn
     // Liên kết: TextArea Nội dung -> Submit
     // Mục đích: Kiểm tra độ dài tối đa, trim khoảng trắng, ký tự đặc biệt

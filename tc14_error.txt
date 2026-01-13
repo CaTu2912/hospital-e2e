@@ -1,0 +1,32 @@
+
+Running 1 test using 1 worker
+
+[1A[2K[1/1] [chromium] › tests\doctors.spec.ts:199:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC14 - Xem chi tiết bác sĩ
+[1A[2K  1) [chromium] › tests\doctors.spec.ts:199:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC14 - Xem chi tiết bác sĩ 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.ant-modal')
+    Expected: visible
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('.ant-modal')[22m
+
+
+      210 |
+      211 |         await page.waitForTimeout(2000);
+    > 212 |         expect(page.url()).toContain('doctor') || expect(page.locator('.ant-modal')).toBeVisible();
+          |                                                                                      ^
+      213 |     });
+      214 |
+      215 |     // ====== TC15: Reload trang chi tiết bác sĩ ======
+        at D:\Testhospital\hospital-e2e\tests\doctors.spec.ts:212:86
+
+
+[1A[2K  1 failed
+    [chromium] › tests\doctors.spec.ts:199:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC14 - Xem chi tiết bác sĩ 
+
+[36m  Serving HTML report at http://localhost:60809. Press Ctrl+C to quit.[39m
+^C

@@ -1,0 +1,38 @@
+
+Running 1 test using 1 worker
+
+[1A[2K[1/1] [chromium] › tests\doctors.spec.ts:24:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC01 - Tra cứu bác sĩ với tên đầy đủ hợp lệ
+[1A[2K[chromium] › tests\doctors.spec.ts:24:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC01 - Tra cứu bác sĩ với tên đầy đủ hợp lệ
+Searching for doctor: Cấp cứu
+* 1155
+
+[1A[2K  1) [chromium] › tests\doctors.spec.ts:24:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC01 - Tra cứu bác sĩ với tên đầy đủ hợp lệ 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('div').filter({ has: locator('img') }).filter({ hasText: /BS\./i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('div').filter({ has: locator('img') }).filter({ hasText: /BS\./i })[22m
+
+
+      38 |
+      39 |         // 4. Verify: Danh sách trả về đúng bác sĩ
+    > 40 |         await expect(doctorCards(page)).toBeVisible();
+         |                                         ^
+      41 |         await expect(doctorCards(page).first()).toContainText(firstDoctorName);
+      42 |     });
+      43 |
+        at D:\Testhospital\hospital-e2e\tests\doctors.spec.ts:40:41
+
+    Error Context: test-results\doctors-UC003---Tra-cứu-th-f414e-ác-sĩ-với-tên-đầy-đủ-hợp-lệ-chromium\error-context.md
+
+
+[1A[2K  1 failed
+    [chromium] › tests\doctors.spec.ts:24:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC01 - Tra cứu bác sĩ với tên đầy đủ hợp lệ 
+
+[36m  Serving HTML report at http://localhost:54423. Press Ctrl+C to quit.[39m

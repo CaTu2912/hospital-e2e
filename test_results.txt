@@ -1,0 +1,349 @@
+
+Running 24 tests using 3 workers
+
+  ✘   3 [chromium] › tests\doctors.spec.ts:63:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC03 - Tra cứu không phân biệt hoa thường (7.1s)
+  ✓   4 [chromium] › tests\doctors.spec.ts:72:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC04 - Tra cứu có dấu và không dấu (2.5s)
+  ✘   2 [chromium] › tests\doctors.spec.ts:44:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC02 - Tra cứu bác sĩ với một phần tên (11.1s)
+  ✘   5 [chromium] › tests\doctors.spec.ts:83:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC05 - Tra cứu với từ khóa không tồn tại (3.9s)
+  ✘   6 [chromium] › tests\doctors.spec.ts:98:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC06 - Tra cứu với input rỗng (3.6s)
+  ✘   1 [chromium] › tests\doctors.spec.ts:19:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC01 - Tra cứu bác sĩ với tên đầy đủ hợp lệ (15.8s)
+  ✘   7 [chromium] › tests\doctors.spec.ts:106:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC07 - Tra cứu với ký tự đặc biệt (2.7s)
+  ✓   8 [chromium] › tests\doctors.spec.ts:117:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC08 - Tra cứu với số (3.0s)
+  ✓  10 [chromium] › tests\doctors.spec.ts:142:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC10 - Tra cứu với chuỗi rất dài (3.5s)
+  ✘   9 [chromium] › tests\doctors.spec.ts:128:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC09 - Tra cứu với khoảng trắng đầu và cuối (7.9s)
+  ✓  12 [chromium] › tests\doctors.spec.ts:185:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC12 - Kết hợp tìm kiếm và lọc chuyên khoa (2.7s)
+  ✓  13 [chromium] › tests\doctors.spec.ts:199:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC13 - Đổi chuyên khoa sau khi search (3.9s)
+  ✓  15 [chromium] › tests\doctors.spec.ts:238:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC15 - Reload trang chi tiết bác sĩ (2.4s)
+  ✘  14 [chromium] › tests\doctors.spec.ts:216:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC14 - Xem chi tiết bác sĩ (7.8s)
+  ✓  16 [chromium] › tests\doctors.spec.ts:250:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC16 - Truy cập trực tiếp URL chi tiết bác sĩ (2.4s)
+  ✘  18 [chromium] › tests\doctors.spec.ts:256:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC17 - Hiển thị ảnh bác sĩ (7.7s)
+  ✓  19 [chromium] › tests\doctors.spec.ts:279:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC19 - Hiển thị loading khi search (2.6s)
+  ✓  20 [chromium] › tests\doctors.spec.ts:294:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC20 - Kiểm tra SQL Injection (2.4s)
+  ✘  11 [chromium] › tests\doctors.spec.ts:150:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC11 - Lọc bác sĩ theo chuyên khoa (30.0s)
+  ✓  21 [chromium] › tests\doctors.spec.ts:309:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC21 - Kiểm tra XSS (3.5s)
+Search time: 5056ms
+  ✘  22 [chromium] › tests\doctors.spec.ts:326:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC22 - Kiểm tra thời gian phản hồi tìm kiếm (7.5s)
+  ✘  23 [chromium] › tests\doctors.spec.ts:344:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC23 - Tìm kiếm bằng phím Enter (8.1s)
+  ✓  24 [chromium] › tests\doctors.spec.ts:355:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC24 - Tab focus vào ô tìm kiếm (2.6s)
+  ✘  17 [chromium] › tests\doctors.spec.ts:267:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC18 - Responsive danh sách bác sĩ (30.0s)
+
+
+  1) [chromium] › tests\doctors.spec.ts:19:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC01 - Tra cứu bác sĩ với tên đầy đủ hợp lệ 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.ant-card, div.bg-white.rounded-2xl.shadow-md, div.shadow-lg').first()
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for locator('.ant-card, div.bg-white.rounded-2xl.shadow-md, div.shadow-lg').first()[22m
+
+
+      19 |     test('UC003_TC01 - Tra cứu bác sĩ với tên đầy đủ hợp lệ', async ({ page }) => {
+      20 |         // Wait for list to load
+    > 21 |         await expect(doctorCard(page)).toBeVisible({ timeout: 10000 });
+         |                                        ^
+      22 |
+      23 |         // Lấy tên bác sĩ đầu tiên để search
+      24 |         // Thử các selector title phổ biến
+        at D:\Testhospital\hospital-e2e\tests\doctors.spec.ts:21:40
+
+    Error Context: test-results\doctors-UC003---Tra-cứu-th-f414e-ác-sĩ-với-tên-đầy-đủ-hợp-lệ-chromium\error-context.md
+
+  2) [chromium] › tests\doctors.spec.ts:44:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC02 - Tra cứu bác sĩ với một phần tên 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.ant-card, div.bg-white.rounded-2xl.shadow-md, div.shadow-lg').first()
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('.ant-card, div.bg-white.rounded-2xl.shadow-md, div.shadow-lg').first()[22m
+
+
+      43 |     // ====== TC02: Tra cứu bác sĩ với một phần tên ======
+      44 |     test('UC003_TC02 - Tra cứu bác sĩ với một phần tên', async ({ page }) => {
+    > 45 |         await expect(doctorCard(page)).toBeVisible();
+         |                                        ^
+      46 |         const keyword = "Nguyen";
+      47 |         await searchInput(page).fill(keyword);
+      48 |         await searchInput(page).press('Enter');
+        at D:\Testhospital\hospital-e2e\tests\doctors.spec.ts:45:40
+
+    Error Context: test-results\doctors-UC003---Tra-cứu-th-536ec-cứu-bác-sĩ-với-một-phần-tên-chromium\error-context.md
+
+  3) [chromium] › tests\doctors.spec.ts:63:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC03 - Tra cứu không phân biệt hoa thường 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      66 |         await searchInput(page).press('Enter');
+      67 |         await page.waitForTimeout(1000);
+    > 68 |         expect(await doctorCards(page).count()).toBeGreaterThan(0);
+         |                                                 ^
+      69 |     });
+      70 |
+      71 |     // ====== TC04: Tra cứu có dấu và không dấu ======
+        at D:\Testhospital\hospital-e2e\tests\doctors.spec.ts:68:49
+
+    Error Context: test-results\doctors-UC003---Tra-cứu-th-b4c6a--không-phân-biệt-hoa-thường-chromium\error-context.md
+
+  4) [chromium] › tests\doctors.spec.ts:83:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC05 - Tra cứu với từ khóa không tồn tại 
+
+    Error: locator.isVisible: Unexpected token "=" while parsing css selector ".ant-empty, text="Không tìm thấy", text="No data"". Did you mean to CSS.escape it?
+    Call log:
+    [2m    - checking visibility of .ant-empty, text="Không tìm thấy", text="No data"[22m
+
+
+      88 |         // Verify empty data
+      89 |         const noData = page.locator('.ant-empty, text="Không tìm thấy", text="No data"');
+    > 90 |         if (await noData.isVisible()) {
+         |                          ^
+      91 |             await expect(noData).toBeVisible();
+      92 |         } else {
+      93 |             expect(await doctorCards(page).count()).toBe(0);
+        at D:\Testhospital\hospital-e2e\tests\doctors.spec.ts:90:26
+
+    Error Context: test-results\doctors-UC003---Tra-cứu-th-779cf-u-với-từ-khóa-không-tồn-tại-chromium\error-context.md
+
+  5) [chromium] › tests\doctors.spec.ts:98:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC06 - Tra cứu với input rỗng 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      100 |         await searchInput(page).press('Enter');
+      101 |         await page.waitForTimeout(1000);
+    > 102 |         expect(await doctorCards(page).count()).toBeGreaterThan(0);
+          |                                                 ^
+      103 |     });
+      104 |
+      105 |     // ====== TC07: Tra cứu với ký tự đặc biệt ======
+        at D:\Testhospital\hospital-e2e\tests\doctors.spec.ts:102:49
+
+    Error Context: test-results\doctors-UC003---Tra-cứu-th-c910f-06---Tra-cứu-với-input-rỗng-chromium\error-context.md
+
+  6) [chromium] › tests\doctors.spec.ts:106:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC07 - Tra cứu với ký tự đặc biệt 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: .ant-empty, text="Không tìm thấy", text="No data" >> internal:or=".ant-card, div.bg-white.rounded-2xl.shadow-md, div.shadow-lg"
+    Expected: visible
+    Error: Unexpected token "=" while parsing css selector ".ant-empty, text="Không tìm thấy", text="No data"". Did you mean to CSS.escape it?
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for .ant-empty, text="Không tìm thấy", text="No data" >> internal:or=".ant-card, div.bg-white.rounded-2xl.shadow-md, div.shadow-lg"[22m
+
+
+      107 |         await searchInput(page).fill('@@@###');
+      108 |         await searchInput(page).press('Enter');
+    > 109 |         await expect(page.locator('.ant-empty, text="Không tìm thấy", text="No data"').or(doctorCards(page))).toBeVisible();
+          |                                                                                                               ^
+      110 |         // Nếu ra kết quả rỗng thì tốt, hoặc ra list rỗng
+      111 |         if (await doctorCards(page).count() === 0) {
+      112 |             // Pass
+        at D:\Testhospital\hospital-e2e\tests\doctors.spec.ts:109:111
+
+    Error Context: test-results\doctors-UC003---Tra-cứu-th-53ddd--Tra-cứu-với-ký-tự-đặc-biệt-chromium\error-context.md
+
+  7) [chromium] › tests\doctors.spec.ts:128:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC09 - Tra cứu với khoảng trắng đầu và cuối 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.ant-card, div.bg-white.rounded-2xl.shadow-md, div.shadow-lg').first()
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('.ant-card, div.bg-white.rounded-2xl.shadow-md, div.shadow-lg').first()[22m
+
+
+      127 |     // ====== TC09: Tra cứu với khoảng trắng đầu và cuối ======
+      128 |     test('UC003_TC09 - Tra cứu với khoảng trắng đầu và cuối', async ({ page }) => {
+    > 129 |         await expect(doctorCard(page)).toBeVisible();
+          |                                        ^
+      130 |         const nameEl = doctorCard(page).locator('h3, h4, .font-bold.text-lg').first();
+      131 |         const realName = await nameEl.innerText();
+      132 |
+        at D:\Testhospital\hospital-e2e\tests\doctors.spec.ts:129:40
+
+    Error Context: test-results\doctors-UC003---Tra-cứu-th-bd479-ới-khoảng-trắng-đầu-và-cuối-chromium\error-context.md
+
+  8) [chromium] › tests\doctors.spec.ts:150:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC11 - Lọc bác sĩ theo chuyên khoa 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('.ant-select-item-option').nth(1)[22m
+    [2m    - locator resolved to <div aria-selected="false" title="Ngoại thần kinh" class="ant-select-item ant-select-item-option">…</div>[22m
+    [2m  - attempting click action[22m
+    [2m    2 × waiting for element to be visible, enabled and stable[22m
+    [2m      - element is not stable[22m
+    [2m    - retrying click action[22m
+    [2m    - waiting 20ms[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is not stable[22m
+    [2m  2 × retrying click action[22m
+    [2m      - waiting 100ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is not visible[22m
+    [2m  52 × retrying click action[22m
+    [2m       - waiting 500ms[22m
+    [2m       - waiting for element to be visible, enabled and stable[22m
+    [2m       - element is not visible[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 500ms[22m
+
+
+      168 |                         const secondOption = options.nth(1); // Chuyên khoa cụ thể
+      169 |                         if (await secondOption.isVisible()) {
+    > 170 |                             await secondOption.click();
+          |                                                ^
+      171 |                             await page.waitForTimeout(1000);
+      172 |                             console.log('Selected filter option at index ' + i);
+      173 |                             expect(await doctorCards(page).count()).toBeGreaterThan(0);
+        at D:\Testhospital\hospital-e2e\tests\doctors.spec.ts:170:48
+
+    Error Context: test-results\doctors-UC003---Tra-cứu-th-1ae60-Lọc-bác-sĩ-theo-chuyên-khoa-chromium\error-context.md
+
+  9) [chromium] › tests\doctors.spec.ts:216:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC14 - Xem chi tiết bác sĩ 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.ant-card, div.bg-white.rounded-2xl.shadow-md, div.shadow-lg').first()
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('.ant-card, div.bg-white.rounded-2xl.shadow-md, div.shadow-lg').first()[22m
+
+
+      215 |     // ====== TC14: Xem chi tiết bác sĩ ======
+      216 |     test('UC003_TC14 - Xem chi tiết bác sĩ', async ({ page }) => {
+    > 217 |         await expect(doctorCard(page)).toBeVisible();
+          |                                        ^
+      218 |         const card = doctorCard(page);
+      219 |
+      220 |         // Click name or button "Xem ngay" / "Chi tiết"
+        at D:\Testhospital\hospital-e2e\tests\doctors.spec.ts:217:40
+
+    Error Context: test-results\doctors-UC003---Tra-cứu-th-1cf18--TC14---Xem-chi-tiết-bác-sĩ-chromium\error-context.md
+
+  10) [chromium] › tests\doctors.spec.ts:256:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC17 - Hiển thị ảnh bác sĩ 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.doctor-card img').first()
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('.doctor-card img').first()[22m
+
+
+      257 |         // 1. Quan sát danh sách bác sĩ
+      258 |         const imgs = page.locator('.doctor-card img');
+    > 259 |         await expect(imgs.first()).toBeVisible();
+          |                                    ^
+      260 |
+      261 |         // Check naturalWidth
+      262 |         const isLoaded = await imgs.first().evaluate((img: HTMLImageElement) => img.naturalWidth > 0);
+        at D:\Testhospital\hospital-e2e\tests\doctors.spec.ts:259:36
+
+    Error Context: test-results\doctors-UC003---Tra-cứu-th-d1edf--TC17---Hiển-thị-ảnh-bác-sĩ-chromium\error-context.md
+
+  11) [chromium] › tests\doctors.spec.ts:267:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC18 - Responsive danh sách bác sĩ 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.boundingBox: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('.doctor-card, .ant-card').first()[22m
+
+
+      272 |         // Check card full width (gần 375)
+      273 |         const card = page.locator('.doctor-card, .ant-card').first();
+    > 274 |         const box = await card.boundingBox();
+          |                                ^
+      275 |         if (box) expect(box.width).toBeLessThan(375);
+      276 |     });
+      277 |
+        at D:\Testhospital\hospital-e2e\tests\doctors.spec.ts:274:32
+
+    Error Context: test-results\doctors-UC003---Tra-cứu-th-bbdf7-Responsive-danh-sách-bác-sĩ-chromium\error-context.md
+
+  12) [chromium] › tests\doctors.spec.ts:326:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC22 - Kiểm tra thời gian phản hồi tìm kiếm 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeLessThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: < [32m5000[39m
+    Received:   [31m5056[39m
+
+      338 |
+      339 |         // 2. Response trong giới hạn cho phép (<3s - 5s)
+    > 340 |         expect(duration).toBeLessThan(5000);
+          |                          ^
+      341 |     });
+      342 |
+      343 |     // ====== TC23: Tìm kiếm bằng phím Enter ======
+        at D:\Testhospital\hospital-e2e\tests\doctors.spec.ts:340:26
+
+    Error Context: test-results\doctors-UC003---Tra-cứu-th-0e348-thời-gian-phản-hồi-tìm-kiếm-chromium\error-context.md
+
+  13) [chromium] › tests\doctors.spec.ts:344:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC23 - Tìm kiếm bằng phím Enter 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.doctor-card').first()
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('.doctor-card').first()[22m
+
+
+      349 |         await page.waitForTimeout(500);
+      350 |         // Verify kết quả list update
+    > 351 |         await expect(page.locator('.doctor-card').first()).toBeVisible();
+          |                                                            ^
+      352 |     });
+      353 |
+      354 |     // ====== TC24: Tab focus vào ô tìm kiếm ======
+        at D:\Testhospital\hospital-e2e\tests\doctors.spec.ts:351:60
+
+    Error Context: test-results\doctors-UC003---Tra-cứu-th-72816----Tìm-kiếm-bằng-phím-Enter-chromium\error-context.md
+
+  13 failed
+    [chromium] › tests\doctors.spec.ts:19:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC01 - Tra cứu bác sĩ với tên đầy đủ hợp lệ 
+    [chromium] › tests\doctors.spec.ts:44:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC02 - Tra cứu bác sĩ với một phần tên 
+    [chromium] › tests\doctors.spec.ts:63:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC03 - Tra cứu không phân biệt hoa thường 
+    [chromium] › tests\doctors.spec.ts:83:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC05 - Tra cứu với từ khóa không tồn tại 
+    [chromium] › tests\doctors.spec.ts:98:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC06 - Tra cứu với input rỗng 
+    [chromium] › tests\doctors.spec.ts:106:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC07 - Tra cứu với ký tự đặc biệt 
+    [chromium] › tests\doctors.spec.ts:128:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC09 - Tra cứu với khoảng trắng đầu và cuối 
+    [chromium] › tests\doctors.spec.ts:150:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC11 - Lọc bác sĩ theo chuyên khoa 
+    [chromium] › tests\doctors.spec.ts:216:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC14 - Xem chi tiết bác sĩ 
+    [chromium] › tests\doctors.spec.ts:256:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC17 - Hiển thị ảnh bác sĩ 
+    [chromium] › tests\doctors.spec.ts:267:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC18 - Responsive danh sách bác sĩ 
+    [chromium] › tests\doctors.spec.ts:326:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC22 - Kiểm tra thời gian phản hồi tìm kiếm 
+    [chromium] › tests\doctors.spec.ts:344:9 › UC003 - Tra cứu thông tin bác sĩ › UC003_TC23 - Tìm kiếm bằng phím Enter 
+  11 passed (1.1m)

@@ -13,6 +13,7 @@ test.describe('UC006 - Tin tức y tế', () => {
 
     // ====== TC01: Mở trang Tin tức thành công ======
     test('UC006_TC01 - Mở trang Tin tức thành công', async ({ page }) => {
+
         // Kiểm tra URL
         await expect(page).toHaveURL(/news/);
 
@@ -31,7 +32,7 @@ test.describe('UC006 - Tin tức y tế', () => {
         await expect(featuredHeader).toBeVisible();
 
         // Cấu trúc Tin nổi bật theo ảnh:
-        // 1. Bài lớn bên trái (Big Thumbnail + Title + Desc)
+        // 1. Bài lớn bên trái 
         const bigFeatured = page.locator('.lg\\:col-span-8, .md\\:col-span-8').first(); // Grid layout hint
         await expect(bigFeatured).toBeVisible();
         await expect(bigFeatured.locator('img')).toBeVisible();

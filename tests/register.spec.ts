@@ -3,12 +3,11 @@ import { test, expect } from '@playwright/test';
 const REGISTER_URL = 'https://hospital.element-trac-group.id.vn/auth/register';
 
 
-// Helper tạo dữ liệu unique
 function uniqueUser() {
   const stamp = Date.now();
   return {
-    username: `auto_${stamp}`,
-    email: `auto_${stamp}@test.com`,
+    username: `auto${stamp}`,
+    email: `auto${stamp}@gmail.com`,
     password: 'Test@12345',
   };
 }
@@ -36,13 +35,7 @@ test.describe('UC_012 - Đăng ký tài khoản', () => {
 
     await page.getByRole('button', { name: 'Đăng ký' }).click();
 
-    await expect(page).toHaveURL(
-      'https://hospital.element-trac-group.id.vn/auth/otp-verification',
-      { timeout: 15000 }
-    );
-
-    // Nếu hệ thống dùng toast thay vì redirect, comment dòng trên và dùng:
-    // await expect(page.locator('text=/đăng ký thành công|thành công/i')).toBeVisible({ timeout: 15000 });
+    await expect(page).toHaveURL('https://hospital.element-trac-group.id.vn/auth/otp-verification',{ timeout: 15000 });
   });
 
   // ====== UC012_TC02 (Auto) ======
@@ -167,8 +160,7 @@ test.describe('UC_012 - Đăng ký tài khoản', () => {
   // Liên kết: Form (Email duplicate) -> Submit
   // Mục đích: Đảm bảo tính duy nhất của Email
   test('UC012_TC11 - Email đã được đăng ký', async ({ page }) => {
-    // Cần 1 email đã tồn tại. Bạn có thể tạo trước bằng TC01 rồi thay vào đây.
-    const existingEmail = 'admin@test.com'; // TODO: đổi đúng email tồn tại trong hệ thống của bạn
+    const existingEmail = 'tuongcat080304@gmail.com';
     const u = uniqueUser();
 
     await page.getByPlaceholder('Nhập tên tài khoản').fill(u.username);

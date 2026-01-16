@@ -7,7 +7,6 @@ const VALID_USER = {
     password: 'thanhthanh'
 };
 
-// UC_013: Sử dụng HealthBot (Chat)
 // Chức năng: Kiểm thử các hoạt động liên quan đến Chatbot hỗ trợ sức khỏe
 // Liên kết: https://hospital.element-trac-group.id.vn/patient/chat
 test.describe('UC_013 - Sử dụng HealthBot (Chat)', () => {
@@ -35,7 +34,6 @@ test.describe('UC_013 - Sử dụng HealthBot (Chat)', () => {
     test('UC013_TC01 - Truy cập HealthBot từ menu trái', async ({ page }) => {
         // Navigate directly to ensure we are on the page
         await page.goto(CHAT_URL, { waitUntil: 'domcontentloaded' });
-
         // Check if we are on chat page
         await expect(page).toHaveURL(/patient\/chat/i);
     });

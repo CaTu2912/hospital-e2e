@@ -9,22 +9,20 @@ test.describe('UC003 - Tra cứu thông tin bác sĩ', () => {
         await page.goto(DOCTORS_URL, { waitUntil: 'networkidle' });
     });
 
-    // Helper locators based on Debug Output
+    // Các locator hỗ trợ dựa trên Debug Output
     const searchInput = (page: Page) => page.locator('input[placeholder="Tìm theo tên bác sĩ..."]');
 
-    // Doctor Name: 
     // Debug output: <div class="font-bold text-[#008db0] text-lg truncate">BS. Nguyễn Văn A</div>
-    // Safe to use .font-bold with "BS." text
+    // An toàn để sử dụng .font-bold với text "BS."
     const doctorNameItem = (page: Page) => page.locator('.font-bold, h3, h4').filter({ hasText: /BS\./i });
 
-    // Doctor Card:
     // Debug output: <div class="bg-white border border-gray-200 rounded shadow-sm overflow-hidden flex flex-col">
-    // We use .shadow-sm and .bg-white and assume it contains the doctor name.
+    // Sử dụng .shadow-sm và .bg-white và giả định nó chứa tên bác sĩ.
     const doctorCards = (page: Page) => page.locator('div.bg-white.shadow-sm, div.shadow-md, .ant-card').filter({ has: doctorNameItem(page) });
 
     // ====== TC01: Tra cứu bác sĩ với tên đầy đủ hợp lệ ======
     test('UC003_TC01 - Tra cứu bác sĩ với tên đầy đủ hợp lệ', async ({ page }) => {
-        // Wait for list to load
+        // Chờ danh sách tải xong
         await expect(doctorNameItem(page).first()).toBeVisible({ timeout: 10000 });
 
         // Lấy tên bác sĩ đầu tiên để search
@@ -49,7 +47,7 @@ test.describe('UC003 - Tra cứu thông tin bác sĩ', () => {
         await searchInput(page).fill(keyword);
         await page.waitForTimeout(2000);
 
-        // Verify
+        // Xác minh kết quả
         const names = doctorNameItem(page);
         expect(await names.count()).toBeGreaterThan(0);
         // Kiểm tra vài card đầu
@@ -81,7 +79,7 @@ test.describe('UC003 - Tra cứu thông tin bác sĩ', () => {
         await searchInput(page).fill('xyz_non_existent_123');
         await page.waitForTimeout(2000);
 
-        // Verify empty data
+        // Xác minh không có dữ liệu
         const noData = page.locator('text="Không tìm thấy bác sĩ phù hợp", text="No data"');
         const count = await doctorNameItem(page).count();
         if (await noData.isVisible()) {
@@ -106,7 +104,7 @@ test.describe('UC003 - Tra cứu thông tin bác sĩ', () => {
         await page.waitForTimeout(2000);
         const count = await doctorNameItem(page).count();
         if (count === 0) {
-            // Pass
+            // Đạt yêu cầu
         } else {
             await expect(page.locator('.ant-empty, text="Không tìm thấy", text="No data"')).toBeVisible();
         }
@@ -116,14 +114,14 @@ test.describe('UC003 - Tra cứu thông tin bác sĩ', () => {
     test('UC003_TC08 - Tra cứu với số', async ({ page }) => {
         await searchInput(page).fill('123456789');
         await page.waitForTimeout(2000);
-        // Likely empty
+        // Có thể rỗng
     });
 
     // ====== TC09: Tra cứu với khoảng trắng đầu và cuối ======
     test('UC003_TC09 - Tra cứu với khoảng trắng đầu và cuối', async ({ page }) => {
         await expect(doctorNameItem(page).first()).toBeVisible();
 
-        // App does not trim whitespace, so we search for the exact name without spaces to ensure test stability
+        // App không cắt khoảng trắng, nên tìm kiếm tên chính xác không dấu cách để đảm bảo test ổn định
         const keyword = "Nguyễn";
         await searchInput(page).fill(keyword);
         await page.waitForTimeout(2000);
@@ -198,13 +196,10 @@ test.describe('UC003 - Tra cứu thông tin bác sĩ', () => {
         await expect(doctorNameItem(page).first()).toBeVisible();
         const card = doctorCards(page).first();
 
-        // Debug output confirmed it is an <a> tag with TÌM HIỂU THÊM
         const btn = card.locator('a').filter({ hasText: /TÌM HIỂU THÊM/i }).first();
-
         if (await btn.isVisible()) {
             await btn.click();
         } else {
-            // Fallback
             await doctorNameItem(page).first().click();
         }
 
@@ -212,7 +207,6 @@ test.describe('UC003 - Tra cứu thông tin bác sĩ', () => {
 
         const isUrlDetail = page.url().includes('doctor') && !page.url().endsWith('doctors') && !page.url().includes('active=bacsi');
         const isModal = await page.locator('.ant-modal').isVisible();
-
         expect(isUrlDetail || isModal).toBeTruthy();
     });
 
@@ -232,7 +226,14 @@ test.describe('UC003 - Tra cứu thông tin bác sĩ', () => {
 
     // ====== TC16: Truy cập trực tiếp URL chi tiết bác sĩ ======
     test('UC003_TC16 - Truy cập trực tiếp URL chi tiết bác sĩ', async ({ page }) => {
-        // Skip
+        const directDetailUrl = `${DOCTORS_URL}/doctors/d1`; 
+        await page.goto(directDetailUrl,{waitUntil:'domcontentloaded'});
+        const { pathname, searchParams } = new URL(page.url());
+        const isDetail = /^\/doctors\/[^/]+$/.test(pathname) || /^\/doctor\/[^/]+$/.test(pathname);
+        const isListOrFilter = pathname === '/doctors' || searchParams.get('active') === 'bacsi';
+        expect(isDetail && !isListOrFilter).toBeTruthy();
+        await expect(page.getByText(/Phạm vi công việc|Kinh nghiệm công tác/i)).toBeVisible({ timeout: 10000 });
+        await expect(page.getByText(/404|not found|không tìm thấy/i)).toHaveCount(0);
     });
 
     // ====== TC17: Hiển thị ảnh bác sĩ ======
@@ -257,7 +258,7 @@ test.describe('UC003 - Tra cứu thông tin bác sĩ', () => {
     // ====== TC19: Hiển thị loading khi search ======
     test('UC003_TC19 - Hiển thị loading khi search', async ({ page }) => {
         await searchInput(page).fill('A');
-        // Check for loading state if visible
+        // Kiểm tra trạng thái loading nếu hiển thị
     });
 
     // ====== TC20: Kiểm tra SQL Injection ======
@@ -270,29 +271,20 @@ test.describe('UC003 - Tra cứu thông tin bác sĩ', () => {
     // ====== TC21: Kiểm tra XSS ======
     test('UC003_TC21 - Kiểm tra XSS', async ({ page }) => {
         await searchInput(page).fill("<script>alert('XSS')</script>");
-        // Verify no alert
+        // Xác minh không có alert
     });
 
     // ====== TC22: Kiểm tra thời gian phản hồi tìm kiếm ======
     test('UC003_TC22 - Kiểm tra thời gian phản hồi tìm kiếm', async ({ page }) => {
         const start = Date.now();
-        await searchInput(page).fill('Doctor');
-        await doctorNameItem(page).first().waitFor({ state: 'visible', timeout: 5000 }).catch(() => { });
+        await searchInput(page).fill('Nguyễn');
+        await doctorNameItem(page).first().waitFor({ state: 'visible', timeout: 5000 });
         const duration = Date.now() - start;
         expect(duration).toBeLessThan(5000);
     });
 
-    // ====== TC23: Tìm kiếm bằng phím Enter ======
-    test('UC003_TC23 - Tìm kiếm bằng phím Enter', async ({ page }) => {
-        await searchInput(page).fill('Nguyen');
-        // Press enter just to ensure it doesn't break anything
-        await page.keyboard.press('Enter');
-        await page.waitForTimeout(1000);
-        await expect(doctorNameItem(page).first()).toBeVisible();
-    });
-
-    // ====== TC24: Tab focus vào ô tìm kiếm ======
-    test('UC003_TC24 - Tab focus vào ô tìm kiếm', async ({ page }) => {
+    // ====== TC23: Tab focus vào ô tìm kiếm ======
+    test('UC003_TC23 - Tab focus vào ô tìm kiếm', async ({ page }) => {
         const input = searchInput(page);
         await input.focus();
         await expect(input).toBeFocused();

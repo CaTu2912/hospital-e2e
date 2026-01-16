@@ -13,30 +13,25 @@ test.describe('UC002 - Điều hướng giữa các trang', () => {
     });
     // ====== UC002_TC01 ======
     // Chức năng: Click từng menu điều hướng (Navigation Menu)
-    // Liên kết: Header Menu (Trang chủ, Đặt lịch khám, Liên hệ)
+    // Liên kết: Header Menu (Trang chủ, Liên hệ)
     // Mục đích: Đảm bảo các link trên menu dẫn đến đúng trang, URL thay đổi đúng pattern
     // Cách sử dụng: Loop qua danh sách item, tìm link theo text va click, sau do verify URL
     test('UC002_TC01 - Click từng menu điều hướng', async ({ page }) => {
-        // Danh sách các menu item cần test (Label -> Expected Pattern)
         const menuItems = [
             { label: 'Trang chủ', urlPattern: /\/|\?active=home/ },
-            // { label: 'Giới thiệu', urlPattern: /about/ }, // Tạm tắt nếu chưa chắc chắn
-            { label: 'Đặt lịch khám', urlPattern: /booking|dat-lich/i }, // Cập nhật label chính xác hơn
+            { label: 'Đặt lịch khám', urlPattern: /booking|dat-lich/i },
             { label: 'Liên hệ', urlPattern: /contact|lien-he/i },
             { label: 'Tin tức', urlPattern: /news/ },
         ];
 
         for (const item of menuItems) {
-            // Click vào link chứa text tương ứng trong Header
             const menuLink = page.locator('header').getByRole('link', { name: item.label }).first();
 
-            // Nếu tìm thấy thì click và verify
             if (await menuLink.isVisible()) {
                 console.log(`Clicking menu: ${item.label}`);
                 await menuLink.click();
                 await expect(page).toHaveURL(item.urlPattern);
 
-                // Quay lại trang chủ để test item tiếp theo
                 await page.goto(BASE_URL);
             } else {
                 console.log(`Menu item not visible: ${item.label}`);
@@ -52,21 +47,13 @@ test.describe('UC002 - Điều hướng giữa các trang', () => {
     // Mục đích: Đảm bảo người dùng có thể quay về trang chủ từ bất kỳ trang con nào bằng cách click Logo
     // Cách sử dụng: Di chuyển sang trang Login, tìm Logo click và verify URL về lại Base URL
     test('UC002_TC02 - Click logo về Trang chủ', async ({ page }) => {
-        // 1. Đi đến một trang khác 
         await page.goto(BASE_URL + 'auth/login');
-
-        // 2. Tìm và click Logo
-        // Selector logo thường là img trong header hoặc link bao quanh img
         const logo = page.locator('header .logo, header img, a.brand').first();
-
-        // Cố gắng click vào parent anchor nếu nó là ảnh
         if (await logo.count() > 0) {
             await logo.click();
         } else {
             await page.mouse.click(50, 50);
         }
-
-        // 3. Verify về trang chủ
         await expect(page).toHaveURL(new RegExp(BASE_URL.replace(/https?:\/\//, '')));
     });
 
@@ -78,7 +65,6 @@ test.describe('UC002 - Điều hướng giữa các trang', () => {
         // 1. Trang chủ
         await page.goto(BASE_URL);
 
-        // 2. Đi tới trang Liên hệ
         await page.getByRole('link', { name: /liên hệ|contact/i }).first().click();
         await expect(page).toHaveURL(/contact/i);
 
@@ -94,13 +80,11 @@ test.describe('UC002 - Điều hướng giữa các trang', () => {
         await page.goBack();
         await expect(page).toHaveURL(BASE_URL); // Hoặc pattern trang chủ
 
-        // 6. Nhấn Forward -> Mong đợi lên lại Liên hệ
         await page.goForward();
         await expect(page).toHaveURL(/contact/i);
     });
 
     // ====== UC002_TC04 ======
-    // Mục đích: Đảm bảo link trỏ ra domain ngoài phải mở tab mới (target="_blank") để giữ chân user
     test('UC002_TC04 - Link ngoài mở đúng cách', async ({ page }) => {
         const links = page.locator('a[href^="http"]:not([href*="themewagon.com/"]):not([href*="hospital.element-trac-group.id.vn"])');
         const count = await links.count();
@@ -113,7 +97,6 @@ test.describe('UC002 - Điều hướng giữa các trang', () => {
             console.log(`Link [${i}]: ${href} | target: ${target}`);
 
             if (!href) continue;
-            //check hostname
             let url: URL;
             try {
                 url = new URL(href);

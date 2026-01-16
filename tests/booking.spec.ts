@@ -19,13 +19,13 @@ test.describe('UC005 - Đăng ký khám bệnh trực tuyến', () => {
         return page.locator('.ant-select-dropdown:not(.ant-select-dropdown-hidden)').last();
     }
 
-    // Hàm chọn option trong Ant Design Select dựa trên label (nhãn)
+    // Hàm chọn option nhãn
     async function selectAntdByLabel(page: Page, labelText: string, optionIndex = 0) {
-        // Chiến lược 1: Tìm container chứa placeholder text bên trong (thường gặp)
+        //  1: Tìm container chứa placeholder text bên trong (thường gặp)
         let container = page.locator('.ant-select-selector').filter({ has: page.getByText(labelText) });
 
         if (await container.count() === 0) {
-            // Chiến lược 2: Nếu label nằm ngoài selector (Form Item), tìm parent chung rồi tìm selector
+            //  2: Nếu label nằm ngoài selector (Form Item), tìm parent chung rồi tìm selector
             container = page.locator('.ant-col, .ant-form-item, .ant-row')
                 .filter({ has: page.getByText(labelText) })
                 .locator('.ant-select-selector');

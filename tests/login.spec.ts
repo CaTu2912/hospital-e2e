@@ -19,15 +19,9 @@ test.describe('UC_010 - Đăng nhập hệ thống', () => {
     // Liên kết: Input Username/Password -> Button "Đăng nhập"
     // Mục đích: Xác nhận người dùng có thể đăng nhập với tài khoản hợp lệ
     test('UC010_TC01 - Đăng nhập thành công với tài khoản hợp lệ', async ({ page }) => {
-        // Fill Username (Try generic selectors)
         await page.locator('input[type="text"], input[type="email"], input[name="username"]').first().fill(VALID_USER.username);
-        // Fill Password
         await page.locator('input[type="password"]').fill(VALID_USER.password);
-
-        // Click button "Đăng nhập"
         await page.locator('button[type="submit"], button:has-text("Đăng nhập"), button:has-text("Login")').first().click();
-
-        // Warn if URL doesn't change
         await expect(page).not.toHaveURL(/login/i, { timeout: 20000 });
     });
 
@@ -38,8 +32,6 @@ test.describe('UC_010 - Đăng nhập hệ thống', () => {
     test('UC010_TC02 - Không nhập tên tài khoản', async ({ page }) => {
         await page.locator('input[type="password"]').fill(VALID_USER.password);
         await page.locator('button[type="submit"], button:has-text("Đăng nhập")').first().click();
-
-        // Validate error
         await expect(page.locator('text=/Vui lòng nhập tên tài khoản!|required/i')).toBeVisible();
     });
 
